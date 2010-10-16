@@ -1,0 +1,3 @@
+[submodule "level3/vendor/propel"]
+	path = level3/vendor/propel
+	url = http://github.com/fzaninotto/propel.git

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Query class for ActiveRecord queries
+ * QueryObject for ActiveRecord queries
  */
 class Query
 {

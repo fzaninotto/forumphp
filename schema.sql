@@ -1,0 +1,21 @@
+CREATE TABLE author
+(
+  id INTEGER  NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(128) NOT NULL,
+  last_name VARCHAR(128) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB;
+
+CREATE TABLE book
+(
+  id INTEGER  NOT NULL AUTO_INCREMENT,
+  title VARCHAR(255) NOT NULL,
+  author_id INTEGER,
+  PRIMARY KEY (id),
+  INDEX book_FI_1 (author_id),
+  CONSTRAINT book_FK_1
+    FOREIGN KEY (author_id)
+    REFERENCES author (id)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL
+) ENGINE=InnoDB;

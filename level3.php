@@ -1,6 +1,6 @@
 <?php
 
-require_once 'level3/vendor/propel/runtime/lib/Propel.php';
+require_once 'vendor/propel/runtime/lib/Propel.php';
 set_include_path(dirname(__FILE__) . '/level3/build/classes' . PATH_SEPARATOR . get_include_path());
 Propel::init(dirname(__FILE__) . '/level3/build/conf/bookstore-conf.php');
 

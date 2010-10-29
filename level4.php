@@ -1,6 +1,6 @@
 <?php
 
-require_once 'level3/vendor/propel/runtime/lib/Propel.php';
+require_once 'vendor/propel/runtime/lib/Propel.php';
 set_include_path(dirname(__FILE__) . '/level4/build/classes' . PATH_SEPARATOR . get_include_path());
 Propel::init(dirname(__FILE__) . '/level4/build/conf/bookstore-conf.php');
 
@@ -76,7 +76,7 @@ $books = BookQuery::create()
 foreach ($books as $book) {
 	echo $book->getTitle(), "\n"; // on demand hydration
 }
-BookQuery::create()->deleteAll();
+BookQuery::create()->forceDeleteAll();
 
 // Validators
 $book1 = new Book();
@@ -104,13 +104,14 @@ echo BookQuery::create()->count(); // 0
 // recover a deleted book
 BookQuery::disableSoftDelete();
 echo BookQuery::create()->count(); // 1
+BookQuery::disableSoftDelete();
 $book = BookQuery::create()->findOne();
 $book->unDelete();
 BookQuery::enableSoftDelete();
 echo BookQuery::create()->count(); // 1
 
 // soft delete works on queries
-BookQuery::create()->delete();
+BookQuery::create()->deleteAll();
 
 // Table Inheritance
 

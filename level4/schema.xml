@@ -27,4 +27,24 @@
 		</validator>
 	</table>
 
+	<table name="content">
+		<column name="id" required="true" primaryKey="true" autoIncrement="true" type="INTEGER" />
+		<column name="title" type="VARCHAR" required="true" primaryString="true" />
+		<column name="is_published" type="BOOLEAN" default="false" />
+	</table>
+
+	<table name="article">
+		<column name="body" type="LONGVARCHAR" />
+		<behavior name="concrete_inheritance">
+			<parameter name="extends" value="content" />
+		</behavior>
+	</table>
+
+	<table name="video">
+		<column name="url" type="VARCHAR" size="255" />
+		<behavior name="concrete_inheritance">
+			<parameter name="extends" value="content" />
+		</behavior>
+	</table>
+
 </database>
